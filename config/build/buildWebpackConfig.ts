@@ -5,11 +5,7 @@ import { buildResolve } from './buildResolvers';
 import { buildPlugins } from './buildPlugins';
 import { buildDevServer } from './buildDevServer';
 
-type WebpackConfigType = Configuration & WebpackOptionsNormalized['devServer'];
-
-export const buildWebpackConfig = (
-  options: BuildOptions
-): WebpackConfigType => {
+export const buildWebpackConfig = (options: BuildOptions): Configuration => {
   return {
     mode: options.mode,
     entry: options.paths.entry,
