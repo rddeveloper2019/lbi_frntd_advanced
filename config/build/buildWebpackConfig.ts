@@ -23,7 +23,7 @@ export const buildWebpackConfig = (
     },
     resolve: buildResolve(),
     plugins: buildPlugins(options),
-    devtool: 'inline-source-map',
-    devServer: buildDevServer(options),
+    devtool: options.isDev ? 'inline-source-map' : undefined,
+    devServer: options.isDev ? buildDevServer(options) : undefined,
   };
 };
