@@ -1,13 +1,10 @@
 import path from 'path';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-// import { fileURLToPath } from 'url';
+import { type Configuration } from 'webpack';
+import { buildPlugins } from './configs/build/buildPlugins';
+import { buildLoaders } from './configs/build/buildLoaders';
+import { buildResolve } from './configs/build/buildResolvers';
 
-// const __filename = fileURLToPath(import.meta.url);
-
-// const __dirname = path.dirname(__filename);
-
-const config = {
+const config: Configuration = {
   mode: 'development',
   entry: path.resolve(__dirname, 'src', 'index.ts'),
   output: {
@@ -16,23 +13,10 @@ const config = {
     clean: true,
   },
   module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
+    rules: buildLoaders(),
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js', 'jsx'],
-  },
-  plugins: [
-    new webpack.ProgressPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html'),
-    }),
-  ],
+  resolve: buildResolve(),
+  plugins: buildPlugins(),
 };
 
 export default config;

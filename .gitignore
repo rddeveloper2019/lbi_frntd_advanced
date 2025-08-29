@@ -139,5 +139,5 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 
-build
-package-lock.json
+/build
+/package-lock.json
