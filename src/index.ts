@@ -1,3 +1,3 @@
 import { log } from './test';
 
-log(45);
+log(Date.now());

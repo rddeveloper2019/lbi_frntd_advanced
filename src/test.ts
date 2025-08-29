@@ -1,3 +1,3 @@
-export const log = (arg: number) => {
-  console.log('TEST', arg);
+export const log = (time: number) => {
+  console.log('Now:', new Date(time).toTimeString());
 };
