@@ -1,8 +1,13 @@
-const path = require('node:path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+// import { fileURLToPath } from 'url';
 
-module.exports = {
+// const __filename = fileURLToPath(import.meta.url);
+
+// const __dirname = path.dirname(__filename);
+
+const config = {
   mode: 'development',
   entry: path.resolve(__dirname, 'src', 'index.ts'),
   output: {
@@ -29,3 +34,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;
