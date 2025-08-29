@@ -6,7 +6,7 @@ import AboutPageAsync from './pages/AboutPage/AboutPage.async';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <div className="app">
       <Link to={'/'}>main page</Link>
       <Link to={'/about'}>about page</Link>
       <Suspense fallback={<div>Loading...</div>}>
@@ -15,6 +15,6 @@ export const App = () => {
           <Route path="/about" element={<AboutPageAsync />} />
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </div>
   );
 };
