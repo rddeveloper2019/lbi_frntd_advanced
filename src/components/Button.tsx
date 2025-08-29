@@ -1,5 +1,17 @@
+import { PropsWithChildren } from 'react';
 import styles from './button.module.scss';
 
-export const Button = () => {
-  return <button className={styles.button}>Ok</button>;
+type ButtonProps = {
+  onClick: () => void;
+};
+
+export const Button = ({
+  children,
+  onClick,
+}: PropsWithChildren<ButtonProps>) => {
+  return (
+    <button onClick={onClick} className={styles.button}>
+      {children}
+    </button>
+  );
 };
