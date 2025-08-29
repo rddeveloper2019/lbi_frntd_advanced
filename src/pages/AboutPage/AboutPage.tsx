@@ -1,9 +1,10 @@
 import { Button } from '../../components/Button';
 
-export const AboutPage = () => {
+const AboutPage = () => {
   return (
     <div>
       ABOUT PAGE <Button />
     </div>
   );
 };
+export default AboutPage;
