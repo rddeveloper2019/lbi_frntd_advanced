@@ -1,10 +1,15 @@
-import { Configuration } from 'webpack';
+import { WebpackOptionsNormalized, type Configuration } from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildLoaders } from './buildLoaders';
 import { buildResolve } from './buildResolvers';
 import { buildPlugins } from './buildPlugins';
+import { buildDevServer } from './buildDevServer';
 
-export const buildWebpackConfig = (options: BuildOptions): Configuration => {
+type WebpackConfigType = Configuration & WebpackOptionsNormalized['devServer'];
+
+export const buildWebpackConfig = (
+  options: BuildOptions
+): WebpackConfigType => {
   return {
     mode: options.mode,
     entry: options.paths.entry,
@@ -18,5 +23,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
     },
     resolve: buildResolve(),
     plugins: buildPlugins(options),
+    devtool: 'inline-source-map',
+    devServer: buildDevServer(options),
   };
 };
