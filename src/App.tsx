@@ -6,7 +6,7 @@ import AboutPageAsync from './pages/AboutPage/AboutPage.async';
 
 export const App = () => {
   return (
-    <div className="app">
+    <div className="app light">
       <Link to={'/'}>main page</Link>
       <Link to={'/about'}>about page</Link>
       <Suspense fallback={<div>Loading...</div>}>
