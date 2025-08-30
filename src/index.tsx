@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client';
-import './styles/index.scss';
-import { App } from './App';
+import 'app/styles/index.scss';
+import { App } from './app/App';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from './theme/ThemeProvider';
+import { ThemeProvider } from 'app/providers/ThemeProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
