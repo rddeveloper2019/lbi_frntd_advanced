@@ -141,3 +141,4 @@ vite.config.ts.timestamp-*
 
 /build
 /package-lock.json
+.DS_Store
