@@ -37,13 +37,6 @@ export default defineConfig([
     rules: {
       'react/react-in-jsx-scope': 'off',
       'i18next/no-literal-string': 'warn',
-      // 'react/jsx-indent': [2, 4],
-      // 'react/jsx-indent-props': [2, 4],
-      // indent: [2, 4],
-      // 'react/jsx-filename-extension': [
-      //     2,
-      //     { extensions: ['.js', '.jsx', '.tsx'] },
-      // ],
     },
   },
   i18next.configs['flat/recommended'],
