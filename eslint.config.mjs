@@ -2,6 +2,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import { defineConfig } from 'eslint/config';
+import i18next from 'eslint-plugin-i18next';
 
 export default defineConfig([
   {
@@ -35,6 +36,7 @@ export default defineConfig([
   {
     rules: {
       'react/react-in-jsx-scope': 'off',
+      'i18next/no-literal-string': 'warn',
       // 'react/jsx-indent': [2, 4],
       // 'react/jsx-indent-props': [2, 4],
       // indent: [2, 4],
@@ -44,4 +46,5 @@ export default defineConfig([
       // ],
     },
   },
+  i18next.configs['flat/recommended'],
 ]);
