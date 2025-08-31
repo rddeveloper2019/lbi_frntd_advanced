@@ -12,7 +12,7 @@ declare module '*.module.scss' {
 }
 
 declare module '*.svg' {
-  import React = require('react');
+  import type * as React from 'react';
   const content: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   export default content;
 }
@@ -48,3 +48,7 @@ declare module '*.avif' {
 }
 
 declare const __IS_DEV__: boolean;
+
+declare type ModuleType<T> = {
+  default: T;
+};
