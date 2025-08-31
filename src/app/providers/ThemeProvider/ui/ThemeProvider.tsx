@@ -12,7 +12,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [theme, setTheme] = useState<Theme>(storedTheme);
 
   const defaultOptions = useMemo(() => ({ theme, setTheme }), [theme]);
-  console.log(setTheme);
+
   return (
     <ThemeContext.Provider value={defaultOptions}>
       {children}

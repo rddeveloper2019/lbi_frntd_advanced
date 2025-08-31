@@ -1,16 +1,24 @@
-import { PropsWithChildren } from 'react';
-import styles from './button.module.scss';
+import { classNames } from 'shared/lib/classNames/classNames';
+import cls from './Button.module.scss';
+import { ButtonHTMLAttributes, FC } from 'react';
 
-type ButtonProps = {
-  onClick: () => void;
-};
+export enum ThemeButton {
+  CLEAR = 'clear',
+}
 
-export const Button = ({
-  children,
-  onClick,
-}: PropsWithChildren<ButtonProps>) => {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+  theme?: ThemeButton;
+}
+
+export const Button: FC<ButtonProps> = (props) => {
+  const { className, children, theme, ...otherProps } = props;
+
   return (
-    <button onClick={onClick} className={styles.button}>
+    <button
+      className={classNames(cls.Button, cls[theme], className)}
+      {...otherProps}
+    >
       {children}
     </button>
   );
