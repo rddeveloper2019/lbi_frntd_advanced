@@ -9,12 +9,9 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ className }: NavbarProps) => {
-  const { theme, toggleTheme } = useTheme();
-
   return (
     <div className={classNames(styles.navbar, className)}>
       <div className={styles.links}>
-        <ThemeSwitcher />
         <AppLink to={'/'}>main page</AppLink>
         <AppLink to={'/about'}>about page</AppLink>
       </div>
