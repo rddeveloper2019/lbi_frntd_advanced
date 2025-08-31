@@ -7,7 +7,7 @@ const MainPage = () => {
   return (
     <div>
       {t('Главная страница')}
-      <img src={pic} alt="" />
+      <img src={pic} width={500}/>
     </div>
   );
 };

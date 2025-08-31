@@ -7,7 +7,9 @@
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx --no-cache",
-    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix  --no-cache"
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix  --no-cache",
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "stylelint:fix": "npx stylelint \"**/*.scss\" --fix"
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,9 @@
     "sass": "^1.91.0",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
+    "stylelint": "^16.23.1",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
     "ts-loader": "^9.5.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2",

@@ -1,13 +1,12 @@
-@use './reset.scss';
-@use './variables/global.scss';
-@use './themes/normal.scss';
-@use './themes/dark.scss';
+@use './reset';
+@use './variables/global';
+@use './themes/normal';
+@use './themes/dark';
 
 .app {
   font: var(--font-m);
   background: var(--bg-color);
   color: var(--primary-color);
-
   min-height: 100vh;
 }
 
