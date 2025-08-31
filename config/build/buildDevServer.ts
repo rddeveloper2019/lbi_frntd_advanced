@@ -9,5 +9,6 @@ export const buildDevServer = (
     open: true,
     port: options.port,
     historyApiFallback: true,
+    hot: true,
   };
 };
