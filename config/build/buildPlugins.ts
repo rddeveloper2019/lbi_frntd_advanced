@@ -4,6 +4,7 @@ import webpack, { type WebpackPluginInstance } from 'webpack';
 import { BuildOptions } from './types/config';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export const buildPlugins = ({
   paths,
@@ -24,6 +25,7 @@ export const buildPlugins = ({
     new CopyPlugin({
       patterns: [{ from: 'public/locales', to: 'locales' }],
     }),
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ];
 
   if (isDev) {
