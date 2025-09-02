@@ -1,9 +1,3 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 /**
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
@@ -36,16 +30,14 @@ export default {
         plugins: [],
       },
     ],
-    '^.+\\.(png|jpg|jpeg|gif|webp|ico|eot|otf|ttf|woff|woff2)$':
+    '^.+\\.(svg|png|jpg|jpeg|gif|webp|ico|eot|otf|ttf|woff|woff2)$':
       '<rootDir>/config/jest/fileTransformer.js',
-    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
   },
   moduleNameMapper: {
     '^(?!src/|@?[/a-zA-Z]|\\.\\.?/)(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss)$': 'identity-obj-proxy',
-    '\\.(png|jpg|jpeg|gif|webp|ico|eot|otf|ttf|woff|woff2)$':
+    '\\.(svg|png|jpg|jpeg|gif|webp|ico|eot|otf|ttf|woff|woff2)$':
       '<rootDir>/config/jest/fileTransformer.js',
-    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
   },
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
 };

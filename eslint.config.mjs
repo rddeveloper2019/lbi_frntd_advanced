@@ -33,11 +33,30 @@ export default defineConfig([
 
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+
   {
     rules: {
       'react/react-in-jsx-scope': 'off',
       'i18next/no-literal-string': 'warn',
+      'i18next/no-literal-string': [
+        'error',
+        {
+          markupOnly: true,
+          ignoreAttribute: ['data-testid', 'to'],
+        },
+      ],
+      'max-len': ['error', { ignoreComments: true, code: 100 }],
     },
   },
   i18next.configs['flat/recommended'],
+  {
+    overrides: [
+      {
+        files: ['**/src/**/*.test.{ts,tsx}'],
+        rules: {
+          'i18next/no-literal-string': 'off',
+        },
+      },
+    ],
+  },
 ]);

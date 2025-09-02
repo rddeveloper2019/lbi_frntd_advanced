@@ -1,9 +1,8 @@
-import path from 'path';
-
 export default {
   process(sourceText, sourcePath) {
+    const fileName = sourcePath.split('/').pop().split('\\').pop();
     return {
-      code: `module.exports = ${JSON.stringify(path.basename(sourcePath))};`,
+      code: `export default ${JSON.stringify(fileName)};`,
     };
   },
 };

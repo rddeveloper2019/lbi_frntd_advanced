@@ -1,6 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { withTranslation } from 'react-i18next';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { renderWithTranslation } from 'shared/lib/test/renderWithTransslation';
 
 import { Sidebar } from 'widgets/Sidebar';
@@ -10,6 +8,13 @@ describe('SideBar', () => {
     renderWithTranslation(<Sidebar />);
 
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
-    screen.debug();
+  });
+
+  test('test toggle sidebar', async () => {
+    renderWithTranslation(<Sidebar />);
+    const toggleBtn = screen.getByTestId('sidebar-toggle');
+
+    fireEvent.click(toggleBtn);
+    expect(screen.getByTestId('sidebar')).toHaveClass('collapsed');
   });
 });
