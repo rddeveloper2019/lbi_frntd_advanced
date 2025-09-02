@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
  */
 
 /** @type {import('jest').Config} */
-const config = {
+export default {
   clearMocks: true,
   testEnvironment: 'jsdom',
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -49,5 +49,3 @@ const config = {
   },
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
 };
-
-module.exports = config;
