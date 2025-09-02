@@ -23,7 +23,7 @@ export default defineConfig([
     },
     settings: {
       react: {
-        version: 'detect', // Автоопределение версии React
+        version: 'detect',
       },
     },
     plugins: {

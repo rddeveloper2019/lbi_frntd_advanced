@@ -23,6 +23,8 @@
     },
     "include": [
         "src",
+        "src/**/*.ts",
+        "src/**/*.tsx",
         "config",
         "./config/jest/setupTests.ts",
         "eslint.config.mjs"
