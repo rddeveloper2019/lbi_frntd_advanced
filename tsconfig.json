@@ -28,5 +28,5 @@
         "config",
         "./config/jest/setupTests.ts",
         "eslint.config.mjs"
-    ]
+    ],
 }

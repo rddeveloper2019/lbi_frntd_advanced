@@ -1,6 +1,6 @@
-// config/storybook/main.ts
 import type { StorybookConfig } from '@storybook/react-webpack5';
-
+import path from 'path';
+import fs from 'fs';
 const config: StorybookConfig = {
   stories: [
     '../../src/**/*.mdx',
@@ -12,62 +12,54 @@ const config: StorybookConfig = {
     options: {},
   },
   webpackFinal: async (webpackConfig) => {
-    const path = require('path');
-
-    // --- 1. Алиасы ---
-    if (!webpackConfig.resolve) webpackConfig.resolve = {};
-    if (!webpackConfig.resolve.alias) webpackConfig.resolve.alias = {};
-
-    webpackConfig.resolve.alias.shared = path.resolve(
-      __dirname,
-      '../../src/shared'
-    );
-
-    // --- 2. Расширения ---
-    webpackConfig.resolve.extensions = ['.js', '.jsx', '.ts', '.tsx', '.json'];
-
-    // --- 3. Удаляем ТОЛЬКО правила, где test — регулярное выражение и совпадает с .scss/.css ---
-    webpackConfig.module.rules = (webpackConfig.module.rules || []).filter(
-      (rule: any) => {
-        // Проверяем, что rule.test существует и это RegExp
-        if (rule.test && rule.test instanceof RegExp) {
-          return !rule.test.test('.scss') && !rule.test.test('.css');
-        }
-        return true; // пропускаем правила без test или с не-RegExp test
-      }
-    );
-
-    // --- 4. Добавляем свои loaders ---
     if (!webpackConfig.module.rules) webpackConfig.module.rules = [];
 
-    webpackConfig.module.rules.push({
-      test: /\.module\.scss$/,
+    const styleLoader = {
+      test: /\.s[ac]ss$/i,
+      exclude: /\.module\.s[ac]ss$/,
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+      include: path.resolve(__dirname, '../../src'),
+    };
+
+    const styleModuleLoader = {
+      test: /\.module\.s[ac]ss$/,
       use: [
         'style-loader',
         {
           loader: 'css-loader',
           options: {
-            importLoaders: 1,
+            esModule: false,
             modules: {
-              localIdentName: '[name]__[local]__[hash:base64:5]',
+              localIdentName: '[path]__[local]--[hash:base64:5]',
             },
+            importLoaders: 1,
           },
         },
         'sass-loader',
       ],
       include: path.resolve(__dirname, '../../src'),
+    };
+
+    webpackConfig.module.rules.push(styleLoader);
+    webpackConfig.module.rules.push(styleModuleLoader);
+
+    if (!webpackConfig.resolve.alias) webpackConfig.resolve.alias = {};
+
+    const srcPath = path.resolve(__dirname, '../../src');
+    const dirs = fs
+      .readdirSync(srcPath, { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
+
+    if (!webpackConfig.resolve.alias) webpackConfig.resolve.alias = {};
+
+    dirs.forEach((dirName) => {
+      (webpackConfig.resolve.alias as Record<string, string>)[dirName] =
+        path.join(srcPath, dirName);
     });
 
-    // Глобальные SCSS
-    webpackConfig.module.rules.push({
-      test: /\.scss$/,
-      exclude: /\.module\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: path.resolve(__dirname, '../../src'),
-    });
-
+    // console.log(webpackConfig);
     return webpackConfig;
   },
 };
-
 export default config;

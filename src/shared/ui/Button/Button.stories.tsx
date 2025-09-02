@@ -51,7 +51,6 @@ export const FullWidth: Story = {
   },
 };
 
-// Пример с кастомным className (если нужно проверить интеграцию)
 export const WithCustomClass: Story = {
   args: {
     children: 'With custom class',
@@ -59,5 +58,3 @@ export const WithCustomClass: Story = {
     className: 'custom-button-class',
   },
 };
-
-// Если в будущем добавишь другие темы — легко расширить
