@@ -23,7 +23,7 @@ export default defineConfig([
     },
     settings: {
       react: {
-        version: 'detect',
+        version: 'detect', // Автоопределение версии React
       },
     },
     plugins: {
@@ -33,11 +33,12 @@ export default defineConfig([
 
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  i18next.configs['flat/recommended'],
 
   {
     rules: {
       'react/react-in-jsx-scope': 'off',
-      'i18next/no-literal-string': 'warn',
+
       'i18next/no-literal-string': [
         'error',
         {
@@ -45,18 +46,52 @@ export default defineConfig([
           ignoreAttribute: ['data-testid', 'to'],
         },
       ],
-      'max-len': ['error', { ignoreComments: true, code: 100 }],
+
+      'max-len': [
+        'error',
+        {
+          code: 100,
+          ignoreComments: true,
+          ignoreTrailingComments: true,
+          ignoreUrls: true,
+          ignoreStrings: true,
+          ignoreTemplateLiterals: true,
+          ignoreRegExpLiterals: true,
+          ignorePattern: '<svg|<path|d=|fill-rule|clip-rule',
+        },
+      ],
     },
   },
-  i18next.configs['flat/recommended'],
+
   {
-    overrides: [
-      {
-        files: ['**/src/**/*.test.{ts,tsx}'],
-        rules: {
-          'i18next/no-literal-string': 'off',
+    files: ['src/components/icons/**/*.tsx', 'src/assets/icons/**/*.tsx'],
+    rules: {
+      'max-len': 'off',
+    },
+  },
+
+  {
+    files: ['**/*.{jsx,tsx}'],
+    rules: {
+      'react/no-unknown-property': [
+        'error',
+        {
+          ignore: [
+            'fill-rule',
+            'clip-rule',
+            'stroke-linecap',
+            'stroke-linejoin',
+            'vector-effect',
+          ],
         },
-      },
-    ],
+      ],
+    },
+  },
+
+  {
+    files: ['**/src/**/*.test.{ts,tsx}'],
+    rules: {
+      'i18next/no-literal-string': 'off',
+    },
   },
 ]);
