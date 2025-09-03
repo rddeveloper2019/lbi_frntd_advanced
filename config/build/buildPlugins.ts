@@ -25,12 +25,12 @@ export const buildPlugins = ({
     new CopyPlugin({
       patterns: [{ from: 'public/locales', to: 'locales' }],
     }),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ];
 
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new ReactRefreshWebpackPlugin());
+    new BundleAnalyzerPlugin({ openAnalyzer: false });
   }
 
   return plugins;
