@@ -4,7 +4,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button/Button';
+import { ButtonAdv } from 'shared/ui/Button/ButtonAdv';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 
 interface SidebarProps {
@@ -29,9 +29,9 @@ export const Sidebar = ({ className }: SidebarProps) => {
         className
       )}
     >
-      <Button data-testid="sidebar-toggle" onClick={handleToggle}>
+      <ButtonAdv data-testid="sidebar-toggle" onClick={handleToggle}>
         {t('Скрыть')}
-      </Button>
+      </ButtonAdv>
       <div className={styles.switchers}>
         <ThemeSwitcher />
         <LangSwitcher />

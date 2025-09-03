@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeButton } from './Button';
-import { Button } from './Button';
+import { ThemeButton } from './ButtonAdv';
+import { ButtonAdv } from './ButtonAdv';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof ButtonAdv> = {
   title: 'shared/Button',
-  component: Button,
+  component: ButtonAdv,
   tags: ['autodocs'],
   argTypes: {
     theme: {
@@ -28,7 +28,7 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof ButtonAdv>;
 
 export const Clear: Story = {
   args: {
